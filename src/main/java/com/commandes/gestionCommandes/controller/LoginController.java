@@ -18,13 +18,13 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/store/userCreation")
+    @PostMapping("/store/user/creation")
     public String createAndConnectUser(@RequestParam String nom, @RequestParam String prenom, @RequestParam String email, @RequestParam String password) {
 
         return service.create(nom, prenom, email, password);
     }
 
-    @PostMapping("/store/userLogin")
+    @PostMapping("/store/user/login")
     public String connectUser(@RequestParam String email, @RequestParam String password) {
         return service.search(email, password);
     }
