@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Gestion</title>
+    <title>Gestion des commandes</title>
 </head>
 <body>
 <h1>Gestion des commandes</h1>
-<a href="/store/home">Déconnexion</a>
 
+<h2>Ajouter une commande</h2>
+<form action="/user" method="post">
+    Nom de la commande : <input type="text" name="name" required>
+    <input type="submit" value="Ajouter">
+</form>
+
+<h2>Mes commandes</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID Commande</th>
+        <th>Nom Commande</th>
+        <th>Date Commande</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="purchase : ${purchases}">
+        <td th:text="${purchase.purchaseId}"></td>
+        <td th:text="${purchase.name}"></td>
+        <td th:text="${purchase.datePurchase}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<form action="/user/logout" method="post">
+    <button type="submit">Déconnexion</button>
+</form>
 </body>
 </html>

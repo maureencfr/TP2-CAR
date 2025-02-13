@@ -1,6 +1,5 @@
 package com.commandes.gestionCommandes.controller;
 
-import com.commandes.gestionCommandes.repository.AccountEntity;
 import com.commandes.gestionCommandes.service.FormularLoginService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +13,9 @@ public class UserController {
     @Autowired
     private FormularLoginService service;
 
-    @PostMapping("/store/home")
-    public String displayHomePageAfterDisconnect(){
-        return "login";
-    }
-
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public RedirectView logout(HttpSession session) {
         session.invalidate();
-        return new RedirectView("/store/home/login");
+        return new RedirectView("/store/home");
     }
 }

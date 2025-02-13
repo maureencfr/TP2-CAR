@@ -1,6 +1,7 @@
 package com.commandes.gestionCommandes.controller;
 
 import com.commandes.gestionCommandes.service.FormularLoginService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +20,13 @@ public class LoginController {
     }
 
     @PostMapping("/store/user/creation")
-    public String createAndConnectUser(@RequestParam String nom, @RequestParam String prenom, @RequestParam String email, @RequestParam String password) {
+    public String createAndConnectUser(@RequestParam String nom, @RequestParam String prenom, @RequestParam String email, @RequestParam String password, HttpSession session) {
 
-        return service.create(nom, prenom, email, password);
+        return service.create(nom, prenom, email, password, session);
     }
 
     @PostMapping("/store/user/login")
-    public String connectUser(@RequestParam String email, @RequestParam String password) {
-        return service.search(email, password);
+    public String connectUser(@RequestParam String email, @RequestParam String password, HttpSession session) {
+        return service.search(email, password, session);
     }
 }

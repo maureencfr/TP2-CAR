@@ -1,4 +1,4 @@
-package com.commandes.gestionCommandes.repository;
+package com.commandes.gestionCommandes.repository.account;
 
 import jakarta.persistence.*;
 
@@ -20,7 +20,7 @@ public class AccountEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long accountId;
 
     public AccountEntity() {}
 
