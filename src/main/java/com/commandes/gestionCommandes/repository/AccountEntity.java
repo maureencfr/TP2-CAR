@@ -1,4 +1,4 @@
-package com.commandes.gestionCommandes.repository.account;
+package com.commandes.gestionCommandes.repository;
 
 import jakarta.persistence.*;
 
@@ -29,6 +29,10 @@ public class AccountEntity {
         this.prenom=prenom;
         this.password=password;
         this.email=email;
+    }
+
+    public Long getId(){
+        return accountId;
     }
 
     public String getNom() {

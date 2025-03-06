@@ -1,4 +1,4 @@
-package com.commandes.gestionCommandes.repository.account;
+package com.commandes.gestionCommandes.repository;
 
 import org.springframework.stereotype.Service;
 

@@ -8,8 +8,8 @@
 <h1>Gestion des commandes</h1>
 
 <h2>Ajouter une commande</h2>
-<form action="/user" method="post">
-    Nom de la commande : <input type="text" name="name" required>
+<form action="/store/user" method="post">
+    Nom de la commande : <input type="text" name="commandName" required>
     <input type="submit" value="Ajouter">
 </form>
 
@@ -23,10 +23,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="purchase : ${purchases}">
-        <td th:text="${purchase.purchaseId}"></td>
-        <td th:text="${purchase.name}"></td>
-        <td th:text="${purchase.datePurchase}"></td>
+    <tr th:each="command : ${commands}">
+        <td th:text="${command.id}"></td>
+        <td th:text="${command.nom}"></td>
+        <td th:text="${command.date}"></td>
     </tr>
     </tbody>
 </table>

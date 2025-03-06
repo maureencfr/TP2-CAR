@@ -1,7 +1,7 @@
 package com.commandes.gestionCommandes.service;
 
-import com.commandes.gestionCommandes.repository.account.AccountEntity;
-import com.commandes.gestionCommandes.repository.account.AccountRepositoryService;
+import com.commandes.gestionCommandes.repository.AccountEntity;
+import com.commandes.gestionCommandes.repository.AccountRepositoryService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,13 @@ public class FormularLoginService {
             var newUser = new AccountEntity(nom, prenom,email,password);
             session.setAttribute("utilisateur", newUser);
             repo.save(newUser);
-            return "user";
+            return "/user";
     }
 
     public String search(String email, String password, HttpSession session) {
         if (repo.findByEmailAndPassword(email, password)!= null){
             session.setAttribute("utilisateur", repo.findByEmailAndPassword(email, password));
-            return "user";
+            return "/user";
         }
         return "userLoginError";
     }
