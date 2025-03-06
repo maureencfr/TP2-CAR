@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Affichage</title>
+</head>
+<body>
+
+<h1>Impression de la commande <span th:text="${command.nom}"></span></h1>
+<h2> Date de la commande : <span th:text="${command.date}"></span></h2>
+<h2>Produits commandés</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Prix unitaire</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(products)}">
+        <td colspan="3">Aucun article enregistré.</td>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.nom}"></td>
+        <td th:text="${product.quantite}"></td>
+        <td th:text="${product.prix}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/store/user">Retour</a>
+
+</body>
+</html>

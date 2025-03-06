@@ -34,6 +34,9 @@
         <td><form th:action="@{/store/user/{id}(id=${command.id})}" method="post">
             <button type="submit">Modifier</button>
         </form></td>
+        <td><form th:action="@{/store/user/{id}/display(id=${command.id})}" method="post">
+            <button type="submit">Afficher</button>
+        </form></td>
     </tr>
     </tbody>
 </table>

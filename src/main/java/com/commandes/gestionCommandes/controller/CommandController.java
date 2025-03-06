@@ -9,6 +9,7 @@ import com.commandes.gestionCommandes.service.ProductService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,6 +52,15 @@ public class CommandController {
         List<ProductEntity> products = productService.getProducts(id);
         model.addAttribute("products", products);
         return "editCommand";
+    }
+
+    @PostMapping("/store/user/{id}/display")
+    public String displayCommand(@PathVariable Long id, Model model) {
+        List<ProductEntity> products = productService.getProducts(id);
+        model.addAttribute("products", products);
+        model.addAttribute("command", service.getCommandById(id));
+        System.out.println(service.getCommandById(id).getNom());
+        return "displayCommand";
     }
 
 }
