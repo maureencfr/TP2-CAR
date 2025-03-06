@@ -20,6 +20,7 @@
         <th>ID_Commande</th>
         <th>Nom_Commande</th>
         <th>Date_Commande</th>
+        <th>Products</th>
     </tr>
     </thead>
     <tbody>
@@ -30,6 +31,9 @@
         <td th:text="${command.id}"></td>
         <td th:text="${command.nom}"></td>
         <td th:text="${command.date}"></td>
+        <td><form th:action="@{/store/user/{id}(id=${command.id})}" method="post">
+            <button type="submit">Modifier</button>
+        </form></td>
     </tr>
     </tbody>
 </table>

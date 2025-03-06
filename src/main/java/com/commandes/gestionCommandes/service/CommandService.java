@@ -26,4 +26,8 @@ public class CommandService {
         repo.save(entity);
         return "user";
     }
+
+    public CommandEntity getCommandById(Long id){
+        return repo.findById(id).orElse(null);
+    }
 }
