@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier la commande</title>
+</head>
+<body>
+<h1>Ajout/Suppression d'articles à la commande</h1>
+
+<h2>Commande : <span th:text="${command.nom}"></span></h2>
+
+<form th:action="@{/store/user/{id}/product(id=${command.id})}" method="post">
+    <label for="productName">Nom de l'article :</label>
+    <input type="text" name="productName" id="productName" required>
+    <br>
+
+    <label for="prix">Prix :</label>
+    <input type="number" name="prix" id="prix" min="1" required>
+    <br>
+
+    <label for="quantite">Quantité :</label>
+    <input type="number" name="quantite" id="quantite" min="1" required>
+    <br>
+
+    <button type="submit">Ajouter l'article</button>
+</form>
+
+<h2>Articles dans la commande</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Prix unitaire</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(products)}">
+        <td colspan="3">Aucun article enregistré.</td>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.nom}"></td>
+        <td th:text="${product.quantite}"></td>
+        <td th:text="${product.prix}"></td>
+        <td>
+            <form th:action="@{/store/user/{id}/product/{productId}(id=${command.id}, productId=${product.id})}" method="post">
+                <button type="submit">Supprimer</button>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+<a href="/store/user">Retour</a>
+
+</body>
+</html>
