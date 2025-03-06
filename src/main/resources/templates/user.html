@@ -17,12 +17,15 @@
 <table>
     <thead>
     <tr>
-        <th>ID Commande</th>
-        <th>Nom Commande</th>
-        <th>Date Commande</th>
+        <th>ID_Commande</th>
+        <th>Nom_Commande</th>
+        <th>Date_Commande</th>
     </tr>
     </thead>
     <tbody>
+    <tr th:if="${#lists.isEmpty(commands)}">
+        <td colspan="3">Aucune commande enregistrée.</td>
+    </tr>
     <tr th:each="command : ${commands}">
         <td th:text="${command.id}"></td>
         <td th:text="${command.nom}"></td>

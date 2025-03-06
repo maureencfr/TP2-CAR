@@ -11,6 +11,9 @@ public class FormularLoginService {
     @Autowired
     private AccountRepositoryService repo;
 
+    @Autowired
+    private CommandService commandService;
+
     public String create(String nom, String prenom, String email, String password, HttpSession session) {
         if (repo.findByEmailAndPassword(email, password)!= null){
             return "userCreationError";
@@ -22,10 +25,13 @@ public class FormularLoginService {
     }
 
     public String search(String email, String password, HttpSession session) {
-        if (repo.findByEmailAndPassword(email, password)!= null){
-            session.setAttribute("utilisateur", repo.findByEmailAndPassword(email, password));
-            return "/user";
+        AccountEntity user = repo.findByEmailAndPassword(email, password);
+        if (user != null) {
+            session.setAttribute("utilisateur", user);
+            session.setAttribute("commands", commandService.getCommands(user.getId()));
+            return "redirect:/store/user";
         }
         return "userLoginError";
     }
+
 }
