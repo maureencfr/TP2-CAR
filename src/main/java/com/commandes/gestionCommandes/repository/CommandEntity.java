@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -19,6 +20,10 @@ public class CommandEntity {
     @ManyToOne
     @JoinColumn(name = "accountId")
     private AccountEntity client;
+
+    @OneToMany
+    @JoinColumn(name = "commandId")
+    private List<ProductEntity> products;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,5 +53,9 @@ public class CommandEntity {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public List<ProductEntity> getProducts() {
+        return products;
     }
 }

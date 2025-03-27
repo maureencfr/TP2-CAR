@@ -51,6 +51,9 @@
     </tr>
     </tbody>
 </table>
+<form th:action="@{/store/user/{id}/send(id=${command.id})}" method="post">
+    <button type="submit">Envoyer la commande</button>
+</form>
 
 <a href="/store/user">Retour</a>
 
